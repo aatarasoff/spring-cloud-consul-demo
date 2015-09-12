@@ -1,0 +1,19 @@
+consul-standalone:
+  image: gliderlabs/consul-server
+  container-name: consul
+  ports:
+    - "8500:8500"
+    - "8400:8400"
+    - "53:53/udp"
+  restart: always
+  net: "host"
+  command: -bootstrap -ui-dir /ui
+
+registrator:
+  image: gliderlabs/registrator
+  container-name: registrator
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock
+  net: "host"
+  restart: "always"
+  command: consul://
