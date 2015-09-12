@@ -1,6 +1,6 @@
 consul-standalone:
   image: gliderlabs/consul-server
-  container-name: consul
+  container_name: consul
   ports:
     - "8500:8500"
     - "8400:8400"
@@ -11,7 +11,7 @@ consul-standalone:
 
 registrator:
   image: gliderlabs/registrator
-  container-name: registrator
+  container_name: registrator
   volumes:
     - /var/run/docker.sock:/tmp/docker.sock
   net: "host"
