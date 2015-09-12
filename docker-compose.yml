@@ -1,3 +1,10 @@
+greetings-api:
+  image: aatarasoff/greetings-api
+  ports:
+    - "8080"
+  environment:
+    SERVICE_NAME: greetings
+
 consul-standalone:
   image: gliderlabs/consul-server
   container_name: consul
@@ -16,4 +23,6 @@ registrator:
     - /var/run/docker.sock:/tmp/docker.sock
   net: "host"
   restart: "always"
+  links:
+    - consul-standalone
   command: consul://
